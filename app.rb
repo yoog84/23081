@@ -9,7 +9,7 @@ set :database, "sqlite3:barbershop.db"#spzdaem podkluchenie k BD(esli menyaetsya
 class Client <ActiveRecord::Base#class nasleduetsya ot activerecord base(vse s bolsh bukvi)
 	#vizov metoda(funkcii) #proveryaem v parametrah, vvedeno li chto to v polyah(imya,telefon itd) v html forme
 	validates :name, presence: true #name- parametr1, presence(prisutstvie)- parametr 2 s tipom hash
-	validates :phone, presence: true
+	validates :phone, presence: true, length: {minimum: 3, maximum: 6} #validations na dlinnu stroki
 	validates :datestamp, presence: true
 	validates :color, presence: true
 	end
