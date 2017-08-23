@@ -1,4 +1,3 @@
-#encoding: utf-8
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
@@ -13,28 +12,38 @@ class Client <ActiveRecord::Base#class nasleduetsya ot activerecord base(vse s b
 class Barber <ActiveRecord::Base#class nasleduetsya ot activerecord base(vse s bolsh bukvi)
 	end
 
-get '/' do
+before do
 	#vivod na ekran vsex parikmaherov
 	@barbers = Barber.all
-	#vivod na ekran vsex parikmaherov s sortirovkoy
-	#@barbers = Barber.order "created_at DESC"
+end
+
+get '/' do
 	erb :index
 end
 
-
-#ispravit na 30
 get '/visit' do
-	@c = Client.new
 	erb :visit
 end
 
 post '/visit' do
 
-	@c = Client.new params[:client]
-	if @c.save
-		erb "<h2>Спасибо, вы записались!</h2>"
-	else
-		@error = @c.errors.full_messages.first
-		erb :visit
-	end
+	@username = params[:username]
+	@phone = params[:phone]
+	@datetime = params[:datetime]
+	@barber = params[:barber]
+	@color = params[:color]
+
+	#name, phone, datestamp, barber, color
+
+	c = Client.new
+	c.name = @username
+	c.phone = @phone
+	c.datestamp = @datestamp
+	c.barber = @barber
+	c.color = @color
+	c.save
+
+
+	erb "<h2> Spasibo vi zapisalis </h2>"
+
 end
