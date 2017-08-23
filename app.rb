@@ -7,6 +7,11 @@ set :database, "sqlite3:barbershop.db"#spzdaem podkluchenie k BD(esli menyaetsya
 
 #sozdaem class kotory budet predstavlyat nashu sushnost
 class Client <ActiveRecord::Base#class nasleduetsya ot activerecord base(vse s bolsh bukvi)
+	#vizov metoda(funkcii) #proveryaem v parametrah, vvedeno li chto to v polyah(imya,telefon itd) v html forme
+	validates :name, presence: true #name- parametr1, presence(prisutstvie)- parametr 2 s tipom hash
+	validates :phone, presence: true
+	validates :datestamp, presence: true
+	validates :color, presence: true
 	end
 
 class Barber <ActiveRecord::Base#class nasleduetsya ot activerecord base(vse s bolsh bukvi)
