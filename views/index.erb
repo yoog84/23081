@@ -1,6 +1,6 @@
 <h2> spisok parikmaherov </h2>
 <% @barbers.each do |barber| %>
 	<p>
-		<%= barber.name %>
+		<a hre="/barber/<%= barber.id %>"><%= barber.name %>
 	</p>
 <% end %>
