@@ -33,8 +33,10 @@ end
 post '/visit' do
 
 	c = Client.new params[:client]
-	c.save
-
-	erb "<h2> Spasibo vi zapisalis </h2>"
-
+	#delaem soobshenie ob oshibke
+	if c.save
+		erb "<h2> Spasibo vi zapisalis </h2>"
+	else
+		erb "<h2> polya ne zapolneny </h2>"
+	end
 end
