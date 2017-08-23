@@ -42,3 +42,7 @@ post '/visit' do
 		erb :visit                           # u klassa massiv est metod first,kotory vozvrashaet pervy element massiva
 	end
 end
+
+get '/barber/:id' do
+	erb :barber
+end
