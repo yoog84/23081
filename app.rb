@@ -27,17 +27,18 @@ get '/' do
 end
 
 get '/visit' do
+	@c = Client.new
 	erb :visit
 end
 
 post '/visit' do
 
-	c = Client.new params[:client]
+	@c = Client.new params[:client]
 	#delaem soobshenie ob oshibke
-	if c.save
+	if @c.save
 		erb "<h2> Spasibo vi zapisalis </h2>"
 	else
-		@error = c.errors.full_messages.first#u modely C. est svoystvo errors,u errors,est svoystvo full_messages(eto massiv),
+		@error = @c.errors.full_messages.first#u modely C. est svoystvo errors,u errors,est svoystvo full_messages(eto massiv),
 		erb :visit                           # u klassa massiv est metod first,kotory vozvrashaet pervy element massiva
 	end
 end
