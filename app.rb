@@ -37,6 +37,7 @@ post '/visit' do
 	if c.save
 		erb "<h2> Spasibo vi zapisalis </h2>"
 	else
-		erb "<h2> polya ne zapolneny </h2>"
+		@error = c.errors.full_messages.first#u modely C. est svoystvo errors,u errors,est svoystvo full_messages(eto massiv),
+		erb :visit                           # u klassa massiv est metod first,kotory vozvrashaet pervy element massiva
 	end
 end
